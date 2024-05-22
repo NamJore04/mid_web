@@ -21,6 +21,7 @@
         <h1 style="text-align: center;">Employee Management</h1>
         <div class="employee-management">
             <div class="form-container">
+                <h2>Add Employee</h2>
                 <form id="employee-form">
                     <input type="hidden" id="employee-id">
                     <input type="text" id="name" placeholder="Name" required>
@@ -32,7 +33,11 @@
                 </form>
                 <h2>Search employee</h2>
                 <input type="text" id="search" placeholder="Search for employees..." oninput="searchEmployees()">
-            </div>
+                <!-- <div>
+                    <input type="text" id="search" placeholder="Search">
+                    <button id="search-btn">Search</button>
+                </div> -->
+            </div> 
             <div class="list-container">
                 <h2>Employee List</h2>
                 <ul id="employee-list"></ul>

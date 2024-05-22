@@ -2,7 +2,7 @@
 require '../db.php';
 
 $searchTerm = $_GET['term'];
-$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 2;
+$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 6;
 
 $sql = "SELECT * FROM employees WHERE name LIKE '%$searchTerm%' OR position LIKE '%$searchTerm%' OR department LIKE '%$searchTerm%' LIMIT $limit";
 $result = $conn->query($sql);

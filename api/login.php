@@ -8,7 +8,7 @@ $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'"
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Tài khoản hợp lệ, đăng nhập thành công
+    // Tài khoản hợp lệ
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;

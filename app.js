@@ -58,9 +58,31 @@ function register(username, password) {
         });
 }
 
-let currentPage = 1;
-const limit = 2;
 
+
+
+
+function updateEmployeeStatus(id, status) {
+    fetch('api/update_status.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${id}&status=${status}`
+    })
+        .then(response => response.json())
+        .then(employee => {
+            if (employee.error) {
+                console.error('Error updating status:', employee.error);
+            } else {
+                console.log('Status updated successfully:', employee);
+                loadEmployees(currentPage);
+            }
+        });
+}
+
+let currentPage = 1;
+const limit = 6;
+
+// Mở rộng hàm loadEmployees để bao gồm cả trạng thái
 function loadEmployees(page = 1) {
     fetch(`api/read.php?page=${page}&limit=${limit}`)
         .then(response => response.json())
@@ -70,10 +92,15 @@ function loadEmployees(page = 1) {
             data.forEach(employee => {
                 const li = document.createElement('li');
                 li.innerHTML = `
-                    ${employee.name} - ${employee.position} - ${employee.department} - ${employee.salary}
-                    <button onclick="editEmployee(${employee.id}, '${employee.name}', '${employee.position}', '${employee.department}', ${employee.salary})">Edit</button>
+                ${employee.name} - ${employee.position} - ${employee.department} - ${employee.salary} - ${employee.status}<br>
+                <div>
+                    <button style="background-color: rgb(26, 164, 164);" onclick="editEmployee(${employee.id}, '${employee.name}', '${employee.position}', '${employee.department}', ${employee.salary})">Edit</button>
                     <button onclick="deleteEmployee(${employee.id})">Delete</button>
-                `;
+                    <button style="background-color: rgb(20, 160, 10);" onclick="updateEmployeeStatus(${employee.id}, '${employee.status === 'Active' ? 'Inactive' : 'Active'}')">
+                        ${employee.status === 'Active' ? 'Deactivate' : 'Activate'}
+                    </button>
+                </div>
+            `;
                 employeeList.appendChild(li);
             });
 
@@ -81,6 +108,8 @@ function loadEmployees(page = 1) {
             document.getElementById('page-info').textContent = `Page ${currentPage}`;
         });
 }
+
+
 
 function checkAuth() {
     fetch('api/authenticate.php')
@@ -220,10 +249,15 @@ function searchEmployees() {
             data.forEach(employee => {
                 const li = document.createElement('li');
                 li.innerHTML = `
-                    ${employee.name} - ${employee.position} - ${employee.department} - ${employee.salary}
-                    <button onclick="editEmployee(${employee.id}, '${employee.name}', '${employee.position}', '${employee.department}', ${employee.salary})">Edit</button>
+                ${employee.name} - ${employee.position} - ${employee.department} - ${employee.salary} - ${employee.status}<br>
+                <div>
+                    <button style="background-color: rgb(26, 164, 164);" onclick="editEmployee(${employee.id}, '${employee.name}', '${employee.position}', '${employee.department}', ${employee.salary})">Edit</button>
                     <button onclick="deleteEmployee(${employee.id})">Delete</button>
-                `;
+                    <button style="background-color: rgb(20, 160, 10);" onclick="updateEmployeeStatus(${employee.id}, '${employee.status === 'Active' ? 'Inactive' : 'Active'}')">
+                        ${employee.status === 'Active' ? 'Deactivate' : 'Activate'}
+                    </button>
+                </div>
+            `;
                 employeeList.appendChild(li);
             });
         });
@@ -240,3 +274,37 @@ function nextPage() {
     currentPage++;
     loadEmployees(currentPage);
 }
+
+
+
+// jquery
+// $(document).ready(function () {
+//     function searchEmployees() {
+//         const searchTerm = $('#search').val();
+
+//         $.ajax({
+//             url: `api/search.php?term=${searchTerm}`,
+//             method: 'GET',
+//             dataType: 'json',
+//             success: function (data) {
+//                 const employeeList = $('#employee-list');
+//                 employeeList.empty();
+//                 data.forEach(employee => {
+//                     const li = `
+//                         <li>
+//                         ${employee.name} - ${employee.position} - ${employee.department} - ${employee.salary} - ${employee.status}<br>
+//                         <div>
+//                             <button style="background-color: rgb(26, 164, 164);" onclick="editEmployee(${employee.id}, '${employee.name}', '${employee.position}', '${employee.department}', ${employee.salary})">Edit</button>
+//                             <button onclick="deleteEmployee(${employee.id})">Delete</button>
+//                             <button style="background-color: rgb(20, 160, 10);" onclick="updateEmployeeStatus(${employee.id}, '${employee.status === 'Active' ? 'Inactive' : 'Active'}')">
+//                                 ${employee.status === 'Active' ? 'Deactivate' : 'Activate'}
+//                             </button>
+//                         </div>
+//                         </li>
+//                     `;
+//                     employeeList.append(li);
+//                 });
+//             }
+//         });
+//     }
+// });

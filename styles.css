@@ -22,7 +22,9 @@ body {
 }
 
 #employee-container {
-    max-width: 1000px;
+    max-width: 1400px;
+    min-width: 1400px;
+    /* width: 100%; */
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -38,7 +40,7 @@ body {
 }
 
 .form-container, .list-container {
-    flex: 1;
+    /* flex: 1; */
     padding: 10px;
 }
 
@@ -96,6 +98,8 @@ ul {
 }
 
 li {
+    max-width: 1000px;
+    min-width: 1000px;
     margin-bottom: 10px;
     padding: 10px;
     background-color: #f9f9f9;
@@ -104,9 +108,18 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* background-color: rgb(20, 160, 10); */
+}
+
+li div {
+    display: flex;
+    align-items: center;
+
 }
 
 li button {
+    min-width: 124px;
+    max-width: 124px;
     margin-left: 5px;
     padding: 5px 10px;
     background-color: #dc3545;
@@ -146,6 +159,8 @@ a:hover {
 }
 
 #pagination button {
+    max-width: 124px;
+    min-width: 124px;
     margin: 0 10px;
     padding: 10px 20px;
     background-color: #007bff;
@@ -163,3 +178,4 @@ a:hover {
     font-size: 16px;
     color: #333;
 }
+

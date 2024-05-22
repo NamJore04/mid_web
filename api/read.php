@@ -5,7 +5,7 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
 $offset = ($page - 1) * $limit;
 
-$sql = "SELECT * FROM employees LIMIT $limit OFFSET $offset";
+$sql = "SELECT * FROM employees ORDER BY id DESC LIMIT $limit OFFSET $offset";
 $result = $conn->query($sql);
 
 $employees = [];
