@@ -170,7 +170,7 @@ function editEmployee(id, name, position, department, salary) {
     document.getElementById('position').value = position;
     document.getElementById('department').value = department;
     document.getElementById('salary').value = salary;
-    document.querySelector('form button[type="submit"]').textContent = 'Update Employee';
+    // document.querySelector('form button[type="submit"]').textContent = 'Update Employee';
 }
 
 function updateEmployee(id) {
@@ -188,9 +188,14 @@ function updateEmployee(id) {
         .then(employee => {
             loadEmployees(currentPage);
             document.getElementById('employee-form').reset();
-            document.querySelector('form button[type="submit"]').textContent = 'Add Employee';
+            // document.querySelector('form button[type="submit"]').textContent = 'Update Employee';
+            document.getElementById('employee-id').value = ''; // Reset hidden input for employee ID
+        })
+        .catch(error => {
+            console.error('Error updating employee:', error);
         });
 }
+
 
 function deleteEmployee(id) {
     fetch('api/delete.php', {
