@@ -1,0 +1,165 @@
+/* Định dạng chung cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* Container cho form đăng nhập và đăng ký */
+#login-container, #register-container {
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#employee-container {
+    max-width: 1000px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.employee-management {
+    display: flex;
+    width: 100%;
+}
+
+.form-container, .list-container {
+    flex: 1;
+    padding: 10px;
+}
+
+/* Định dạng cho các tiêu đề */
+h1, h2 {
+    color: #333;
+}
+
+/* Định dạng cho các form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Định dạng cho các input và button */
+input, button {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button#load-more-btn, button#load-less-btn {
+    width: auto;
+    padding: 5px 15px;
+    margin-top: 10px;
+}
+
+/* Định dạng cho danh sách nhân viên */
+ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+
+li button:hover {
+    background-color: #c82333;
+}
+
+/* Định dạng cho các liên kết */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Định dạng cho thông báo lỗi */
+#login-message, #register-message {
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+
+
+/* Định dạng cho phân trang */
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#pagination button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#pagination button:hover {
+    background-color: #0056b3;
+}
+
+#page-info {
+    font-size: 16px;
+    color: #333;
+}

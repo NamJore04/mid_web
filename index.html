@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login-container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p id="login-message"></p>
+        </form>
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+
+    <div id="employee-container" style="display: none;">
+        <h1 style="text-align: center;">Employee Management</h1>
+        <div class="employee-management">
+            <div class="form-container">
+                <form id="employee-form">
+                    <input type="hidden" id="employee-id">
+                    <input type="text" id="name" placeholder="Name" required>
+                    <input type="text" id="position" placeholder="Position" required>
+                    <input type="text" id="department" placeholder="Department" required>
+                    <input type="number" id="salary" placeholder="Salary" required>
+                    <button type="submit">Add Employee</button>
+                    <button type="button" onclick="logout()">Logout</button>
+                </form>
+                <h2>Search employee</h2>
+                <input type="text" id="search" placeholder="Search for employees..." oninput="searchEmployees()">
+            </div>
+            <div class="list-container">
+                <h2>Employee List</h2>
+                <ul id="employee-list"></ul>
+                <div id="pagination">
+                    <button id="prev-page" onclick="prevPage()">Previous</button>
+                    <span id="page-info"></span>
+                    <button id="next-page" onclick="nextPage()">Next</button>
+                </div>
+                <!-- <button id="load-more-btn" onclick="loadMoreEmployees()">Load More</button>
+                <button id="load-less-btn" style="display: none;" onclick="loadLessEmployees()">Load Less</button> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
